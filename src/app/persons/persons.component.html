@@ -1,0 +1,19 @@
+<h2 class="display-6 text-center mb-4">People List</h2>
+
+<div class="container">
+  <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4">
+    <div class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+      <a class="btn btn-primary float-right" [routerLink]="['/create']"
+        >Create</a
+      >
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4" *ngFor="let person of people">
+      <app-person-card [person]="person"></app-person-card>
+    </div>
+    <div class="col-md-12 text-center" *ngIf="!people || people.length == 0">
+      <p class="text-danger">There is not people, Create new persons</p>
+    </div>
+  </div>
+</div>

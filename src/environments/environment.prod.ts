@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  remoteServiceBaseUrl: 'https://tekdi-challenges.appspot.com/api/',
 };

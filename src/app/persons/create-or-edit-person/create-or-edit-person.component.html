@@ -1,0 +1,174 @@
+<h2 class="display-6 text-center mb-4">
+  {{ !!id ? "Edit Person" : "Create new person" }}
+</h2>
+
+<div class="card">
+  <div class="card-body">
+    <div class="container">
+      <form class="form" [formGroup]="personForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+          <div class="col-md-6">
+            <!-- Person Name -->
+            <div class="form-group my-3">
+              <label for="person_name">Person Name</label>
+              <input
+                type="text"
+                [ngClass]="{
+                  'is-valid': f.name.valid,
+                  'is-invalid':
+                    (f.name.touched && f.name.invalid) ||
+                    (submitted && f.name.invalid)
+                }"
+                class="form-control"
+                id="person_name"
+                name="person_name"
+                formControlName="name"
+                placeholder="Enter person name"
+              />
+              <div
+                class="invalid-feedback"
+                *ngIf="
+                  (f.name.touched && f.name.invalid) ||
+                  (submitted && f.name.invalid)
+                "
+              >
+                <span *ngIf="f.name.errors?.required">Name is required</span>
+              </div>
+            </div>
+            <!-- Email Address -->
+            <div class="form-group my-3">
+              <label for="person_email">Email address</label>
+              <input
+                type="text"
+                [ngClass]="{
+                  'is-valid': f.email.valid,
+                  'is-invalid':
+                    (f.email.touched && f.email.invalid) ||
+                    (submitted && f.email.invalid)
+                }"
+                class="form-control"
+                id="person_email"
+                name="person_email"
+                formControlName="email"
+                placeholder="Enter email"
+              />
+              <div
+                class="invalid-feedback"
+                *ngIf="
+                  (f.email.touched && f.email.invalid) ||
+                  (submitted && f.email.invalid)
+                "
+              >
+                <span *ngIf="f.email.errors?.required"
+                  >Email Address is required</span
+                >
+                <span *ngIf="f.email.errors?.email">Invalid email address</span>
+              </div>
+            </div>
+            <!-- Date Of Birth -->
+            <div class="form-group my-3">
+              <label for="person_dob">Date of birth</label>
+              <input
+                type="text"
+                [ngClass]="{
+                  'is-valid': f.dob.valid,
+                  'is-invalid':
+                    (f.dob.touched && f.dob.invalid) ||
+                    (submitted && f.dob.invalid)
+                }"
+                placeholder="Datepicker"
+                class="form-control"
+                bsDatepicker
+                name="person_dob"
+                formControlName="dob"
+                placeholder="Enter dob"
+                [bsConfig]="{ isAnimated: true }"
+              />
+              <div
+                class="invalid-feedback"
+                *ngIf="
+                  (f.dob.touched && f.dob.invalid) ||
+                  (submitted && f.dob.invalid)
+                "
+              >
+                <span *ngIf="f.dob.errors?.required"
+                  >Date of birth is required</span
+                >
+              </div>
+            </div>
+            <!-- Person Country -->
+            <div class="form-group my-3">
+              <label for="person_country">Country</label>
+              <input
+                type="text"
+                [ngClass]="{
+                  'is-valid': f.country.valid,
+                  'is-invalid':
+                    (f.country.touched && f.country.invalid) ||
+                    (submitted && f.country.invalid)
+                }"
+                class="form-control"
+                id="person_country"
+                name="person_country"
+                formControlName="country"
+                placeholder="Enter country name"
+              />
+              <div
+                class="invalid-feedback"
+                *ngIf="
+                  (f.country.touched && f.country.invalid) ||
+                  (submitted && f.country.invalid)
+                "
+              >
+                <span *ngIf="f.country.errors?.required"
+                  >Country is required</span
+                >
+              </div>
+            </div>
+            <!-- Avatar -->
+            <div class="form-group my-3">
+              <label for="person_avatar">Avatar URL</label>
+              <input
+                type="text"
+                [ngClass]="{
+                  'is-valid': f.avatar.valid,
+                  'is-invalid':
+                    (f.avatar.touched && f.avatar.invalid) ||
+                    (submitted && f.avatar.invalid)
+                }"
+                class="form-control"
+                id="person_avatar"
+                name="person_avatar"
+                formControlName="avatar"
+                placeholder="Enter avatar url"
+              />
+              <div
+                class="invalid-feedback"
+                *ngIf="
+                  (f.avatar.touched && f.avatar.invalid) ||
+                  (submitted && f.avatar.invalid)
+                "
+              >
+                <span *ngIf="f.avatar.errors?.required"
+                  >Avatar is required</span
+                >
+              </div>
+            </div>
+            <div class="w-100 my-3">
+              <button type="submit" class="w-100 btn btn-primary">Save</button>
+            </div>
+          </div>
+          <div class="col-md-6 text-center">
+            <img
+              height="480px"
+              [src]="
+                !!avatarURL ? avatarURL : 'assets/images/default-avatar.jpg'
+              "
+              class="w-100 rounded"
+            />
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

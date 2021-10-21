@@ -1,0 +1,27 @@
+<div class="card card-inverse card-info">
+  <img class="card-img-top" [src]="person?.avatar ? person?.avatar : ''" />
+  <div class="card-block">
+    <figure class="profile">
+      <img
+        [src]="person?.avatar ? person?.avatar : ''"
+        class="profile-avatar"
+        alt=""
+      />
+    </figure>
+    <h4 class="card-title mt-3">{{ person?.name }}</h4>
+    <div class="meta card-text">
+      <a>{{ person?.email }}</a>
+    </div>
+    <div class="card-text">Live's in {{ person?.country }}</div>
+  </div>
+  <div class="card-footer">
+    <div class="d-flex flex-column flex-md-row align-items-center">
+      <small class="d-flex align-items-center">{{ person?.dob | age }}</small>
+      <a
+        class="btn btn-warning btn-sm d-inline-flex mt-2 mt-md-0 ms-md-auto"
+        [routerLink]="['edit', person?.id]"
+        >Edit</a
+      >
+    </div>
+  </div>
+</div>
